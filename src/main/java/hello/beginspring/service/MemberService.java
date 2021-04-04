@@ -3,14 +3,29 @@ package hello.beginspring.service;
 import hello.beginspring.domain.Member;
 import hello.beginspring.repository.MemberRepository;
 import hello.beginspring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 //비즈니스 로직에 가까운 메서드 이름으로 작성하기.
+@Service
+
+//@Service Annotation 내부에 @Component 가 내장되어있다. (@Controller 와 @Repository 도 마찬가지)
+//이를 컴포넌트 스캔과 자동 의존관계 설정이라 말한다(?)
+//@Component 가 내장되어 있기 때문에 스프링 빈으로 자동 등록되어있는 것 !
+
+//참고: 스프링은 스프링 컨테이너에 스프링 빈을 등록할 때, 기본으로 싱글톤(singleton)으로 등록한다
+// (유일하게 하나만 등록해서 공유한다.)따라서 같은 스프링 빈이면 모두 같은 인스턴스이다.
 public class MemberService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    @Autowired
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     /*
     * 회원 가입
