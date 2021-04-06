@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 //비즈니스 로직에 가까운 메서드 이름으로 작성하기.
-@Service
+//@Service
 
 //@Service Annotation 내부에 @Component 가 내장되어있다. (@Controller 와 @Repository 도 마찬가지)
 //이를 컴포넌트 스캔과 자동 의존관계 설정이라 말한다(?)
@@ -22,7 +22,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    @Autowired
+    //@Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
