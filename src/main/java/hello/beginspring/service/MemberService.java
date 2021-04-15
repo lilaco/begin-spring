@@ -6,6 +6,7 @@ import hello.beginspring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,9 @@ import java.util.Optional;
 
 //참고: 스프링은 스프링 컨테이너에 스프링 빈을 등록할 때, 기본으로 싱글톤(singleton)으로 등록한다
 // (유일하게 하나만 등록해서 공유한다.)따라서 같은 스프링 빈이면 모두 같은 인스턴스이다.
+
+@Transactional
+//JPA 를 사용하려면 항상 Transactional 이 있어야 한다.
 public class MemberService {
 
     private final MemberRepository memberRepository;
