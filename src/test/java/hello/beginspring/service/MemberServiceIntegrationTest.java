@@ -2,9 +2,6 @@ package hello.beginspring.service;
 
 import hello.beginspring.domain.Member;
 import hello.beginspring.repository.MemberRepository;
-import hello.beginspring.repository.MemoryMemberRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,8 +15,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MemberServiceIntegrationTest {
 
-    @Autowired MemberService memberService;
-    @Autowired MemberRepository memberRepository;
+    @Autowired
+    MemberService memberService;
+    @Autowired
+    MemberRepository memberRepository;
 
     @Test
     void 회원가입() {

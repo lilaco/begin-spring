@@ -1,5 +1,6 @@
 package hello.beginspring;
 
+import hello.beginspring.aop.TimeTraceAop;
 import hello.beginspring.repository.*;
 import hello.beginspring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +24,13 @@ public class SpringConfig {
     }
     */
 
-    /* JPA 사용하기 위해 Entity 를 DI 해준다.
+    /* //JPA 사용하기 위해 Entity 를 DI 해준다.
     private EntityManager em;
 
     public SpringConfig(EntityManager em) {
         this.em = em;
-    }
-*/
+    }*/
+
 
     private final MemberRepository memberRepository;
 
@@ -43,12 +44,17 @@ public class SpringConfig {
         return new MemberService(memberRepository);
     }
 
-    /*
-    @Bean
+
+    /*@Bean
     public MemberRepository memberRepository() {
         //return new MemoryMemberRepository();
         //return new JdbcMemberRepository(dataSource);
         //return new JdbcTemplateMemberRepository(dataSource);
-//        return new JpaMemberRepository(em);
+        return new JpaMemberRepository(em);
+    }*/
+
+    /*@Bean // 다음과 같이 Bean 을 추가하거나 TimeTraceAop 클래스에 Component scan 으로 사용한다.
+    public TimeTraceAop timeTraceAop() {
+        return new TimeTraceAop();
     }*/
 }
