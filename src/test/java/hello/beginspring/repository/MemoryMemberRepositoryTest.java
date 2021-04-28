@@ -33,7 +33,7 @@ class MemoryMemberRepositoryTest {
 
         repository.save(member);
 
-        Member result = repository.findByID(member.getId()).get();
+        Member result = repository.findById(member.getId()).get();
         //System.out.println("result = " + (result == member));
         //출력도 가능하지만 아래와 같이 확인할 수 있다. (assertions)
 

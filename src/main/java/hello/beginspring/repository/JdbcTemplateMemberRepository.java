@@ -37,7 +37,7 @@ public class JdbcTemplateMemberRepository implements MemberRepository {
     }
 
     @Override
-    public Optional<Member> findByID(Long id) {
+    public Optional<Member> findById(Long id) {
         List<Member> result = jdbcTemplate.query("select * from member where id =?", memberRowMapper(), id);
         //여기서 두번째 파라미터의 역할은 무엇일까?
         return result.stream().findAny();

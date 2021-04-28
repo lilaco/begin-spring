@@ -8,7 +8,7 @@ import java.util.*;
 //@Repository
 public class MemoryMemberRepository implements MemberRepository{
 
-    private static Map<Long, Member> store = new HashMap<>();
+    private static final Map<Long, Member> store = new HashMap<>();
     //실무에서는 동시성 문제가 있을 수 있어서, 공유되는 변수일때는 ConcurrentHashMap 을 사용해야 한다.
     // 위 코드는 단순예제이기에 그냥 HashMap 사용.
     private static long sequence = 0L;
@@ -21,7 +21,7 @@ public class MemoryMemberRepository implements MemberRepository{
     }
 
     @Override
-    public Optional<Member> findByID(Long id) {
+    public Optional<Member> findById(Long id) {
         return Optional.ofNullable(store.get(id));
     }
 
